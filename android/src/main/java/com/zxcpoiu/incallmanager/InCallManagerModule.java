@@ -579,6 +579,8 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
             selectedAudioDevice = AudioDevice.NONE;
             audioDevices.clear();
             updateAudioRoute();
+            audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+
 
             if (!ringbackUriType.isEmpty()) {
                 startRingback(ringbackUriType);
@@ -860,7 +862,6 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
 
     @ReactMethod
     public void setSpeakerphoneOn(final boolean enable) {
-        audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
         if (enable != audioManager.isSpeakerphoneOn())  {
             Log.d(TAG, "setSpeakerphoneOn(): " + enable);
             audioManager.setSpeakerphoneOn(enable);
