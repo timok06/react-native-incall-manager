@@ -579,7 +579,7 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
             selectedAudioDevice = AudioDevice.NONE;
             audioDevices.clear();
             updateAudioRoute();
-            audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+            //audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
 
 
             if (!ringbackUriType.isEmpty()) {
@@ -611,6 +611,7 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
                 restoreOriginalAudioSetup();
                 abandonAudioFocus();
                 audioManagerActivated = false;
+                audioManager.setMode(origAudioMode);
             }
             wakeLockUtils.releasePartialWakeLock();
         }
